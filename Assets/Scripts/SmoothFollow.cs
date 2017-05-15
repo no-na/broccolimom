@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SmoothFollow : MonoBehaviour
 	{
-	public Transform player;
 	
 	[SerializeField]
 	private float xMin = 0f;
@@ -23,14 +22,27 @@ public class SmoothFollow : MonoBehaviour
 
 	void Update()
 	{
-		if(xMin < player.position.x)
-			xMin = player.position.x;
+		if(xMin < transform.position.x)
+			xMin = transform.position.x;
 		
-		transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
-		transform.position = new Vector3(
-			Mathf.Clamp(transform.position.x, xMin, xMax),
-			Mathf.Clamp(transform.position.y, yMin, yMax),
+		transform.position = GetMidpoint();
+	}
+	
+	//returns the transform of the midpoint of the brother and sister.
+	//This point is what the camera focuses on.
+	Vector3 GetMidpoint()
+	{
+		return new Vector3(
+			GetAverage(sisterTransform.position.x , brotherTransform.position.x),
+			GetAverage(sisterTransform.position.y , brotherTransform.position.y),
 			-10f
 		);
+	}
+	
+	
+	//returns a X,Y, or Z position to be used as a midpoint
+	float GetAverage(float a, float b)
+	{
+		return (a+b)/2f;
 	}
 }

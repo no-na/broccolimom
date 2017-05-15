@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class EnemyBullet : MonoBehaviour {
 
@@ -32,7 +31,7 @@ public class EnemyBullet : MonoBehaviour {
 
         if (bulletLife <= 0)
         {
-            Destroy(this.gameOjbect);
+            Destroy(this.gameObject);
         }
 
 
