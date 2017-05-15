@@ -13,6 +13,13 @@ public class SmoothFollow : MonoBehaviour
 	private float yMin = 0f;
 	[SerializeField]
 	private float yMax = 0f;
+	
+	
+	// The transforms of the players. Used to determine their midpoint.
+	[SerializeField]
+	private Transform sisterTransform;
+	[SerializeField]
+	private Transform brotherTransform;
 
 	void Update()
 	{
