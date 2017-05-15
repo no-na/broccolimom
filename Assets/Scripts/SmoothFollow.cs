@@ -25,7 +25,15 @@ public class SmoothFollow : MonoBehaviour
 		if(xMin < transform.position.x)
 			xMin = transform.position.x;
 		
+		// Set position to midpoint
 		transform.position = GetMidpoint();
+		
+		// Apply clamps to position
+		transform.position = new Vector3(
+			Mathf.Clamp(transform.position.x, xMin, xMax),
+			Mathf.Clamp(transform.position.y, yMin, yMax),
+			-10f
+		);
 	}
 	
 	//returns the transform of the midpoint of the brother and sister.

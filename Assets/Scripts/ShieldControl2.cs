@@ -27,7 +27,7 @@ public class ShieldControl2 : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D target)
     {
         Debug.Log(target.gameObject.tag);
-        GameManager g = GameObject.Find("GameManage").GetComponent<GameManager>();
+        GameManager g = GameObject.Find("GameManager").GetComponent<GameManager>();
         g.ShieldHealth(target);
     }
 

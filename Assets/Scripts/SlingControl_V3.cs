@@ -59,7 +59,7 @@ public class SlingControl_V3 : MonoBehaviour {
 
 
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire"))
         {
             Instantiate(projectile, parent.position, parent.rotation);
 

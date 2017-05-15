@@ -201,6 +201,7 @@ public class CharacterController2D : MonoBehaviour
 				Physics2D.IgnoreLayerCollision( gameObject.layer, i );
 		}
 		Physics2D.IgnoreLayerCollision( gameObject.layer, 10, false );
+		Physics2D.IgnoreLayerCollision( gameObject.layer, 11, false );
 	}
 
 
