@@ -19,6 +19,11 @@ public abstract class Attack : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public int Damage()
+	{
+		return damage;
+	}
 	
 	public abstract void DoAttack();
 	
