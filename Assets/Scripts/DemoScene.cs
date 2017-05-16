@@ -10,7 +10,9 @@ public class DemoScene : MonoBehaviour
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
 	public float jumpHeight = 3f;
-	
+    //health config
+    public float health = 6f;
+
 	[SerializeField]
 	private string controllerName = "";
 
@@ -148,5 +150,17 @@ public class DemoScene : MonoBehaviour
 
 		_controller.move( _velocity * Time.deltaTime );
 	}
-
+    //collisions!!!
+    void OnTriggerEnter2d(Collider2D other)
+    {
+        string strOther = other.gameObject.GetType().ToString();
+        if (strOther == "EnemyBullet")
+        {
+            health -= 1;
+        }
+        else if (strOther == "Shark")
+        {
+            health -= 1;
+        }
+    }
 }

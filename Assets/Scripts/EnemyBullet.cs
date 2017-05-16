@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour {
     public float bulletForce = 200.0f;
     public Vector2 direction = Vector2.left;
     public float bulletLife = 2;
+    public string playerTag;
 
     private Rigidbody2D rb2d;
 
@@ -34,6 +35,14 @@ public class EnemyBullet : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
+    }
 
+    //player collision
+    void OnTriggerEnter2d(Collider2D other)
+    {
+        if (other.gameObject.CompareTag (playerTag))
+        {
+            bulletLife = 0;
+        }
     }
 }
