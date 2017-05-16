@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 
-public class ShieldControl2 : MonoBehaviour {
+public class ShieldControl2 : MonoBehaviour
+{
 
     public GameObject character; // Player is the GameeObject it follows
     public GameObject shield; // Player is the GameeObject it follows
@@ -20,7 +21,7 @@ public class ShieldControl2 : MonoBehaviour {
     {
         lall(character);
         SheildMove();
-        
+
     }
 
 
@@ -39,10 +40,10 @@ public class ShieldControl2 : MonoBehaviour {
     }
 
     void SheildMove()
-    {    
-        
+    {
+
         transform.localPosition = new Vector3(Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical"), accel * Time.deltaTime); 
+            Input.GetAxis("Vertical"), accel * Time.deltaTime);
         // this transforms around the object thats moving, based upon your joysticks position, should rotate accordingly
 
     }
