@@ -162,5 +162,9 @@ public class DemoScene : MonoBehaviour
         {
             health -= 1;
         }
+        else if (strOther == "PufferFish")
+        {
+            health -= 1;
+        }
     }
 }
