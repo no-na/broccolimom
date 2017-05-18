@@ -150,7 +150,7 @@ public class DemoScene : MonoBehaviour
 
 		_controller.move( _velocity * Time.deltaTime );
 	}
-    //collisions!!!
+    //collisions!!!!
     void OnTriggerEnter2d(Collider2D other)
     {
         string strOther = other.gameObject.GetType().ToString();

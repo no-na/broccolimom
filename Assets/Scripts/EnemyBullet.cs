@@ -37,7 +37,7 @@ public class EnemyBullet : MonoBehaviour {
 
     }
 
-    //player collision
+    //player collision!
     void OnTriggerEnter2d(Collider2D other)
     {
         if (other.gameObject.CompareTag (playerTag))
