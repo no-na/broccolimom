@@ -58,10 +58,7 @@ public class SlingControl_V3 : MonoBehaviour {
     }
 
     void BulletShot(GameObject projectile, int Speed, Transform parent)
-    {
-
-
-
+    { 
         if (Input.GetButtonDown("Fire"))
         {
             Instantiate(projectile, parent.position, parent.rotation);

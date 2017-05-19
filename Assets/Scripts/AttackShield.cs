@@ -5,8 +5,14 @@ using UnityEngine;
 [RequireComponent( typeof( BoxCollider2D ))]
 public class AttackShield : Attack {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject character; // Player is the GameObject it follows
+    public GameObject shield; // Player is the GameObject
+    public float accel; //accel changes the speeed at which it rotates (joystick)
+    public int health = 3;
+    public bool reflective = false;
+
+    // Use this for initialization
+    void Start () {
 		transform.GetComponent<SpriteRenderer>().color = Color.clear;
 		transform.GetComponent<Collider2D>().enabled = false;
 	}
@@ -21,18 +27,41 @@ public class AttackShield : Attack {
 		print("TRIGGER");
 		//something has collided with the monster
 
-		if (other.gameObject.CompareTag ("Enemy")) {
+		if (other.gameObject.CompareTag ("Enemy"))
+        {
 			other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+
 		}
-	}
+
+        Debug.Log(other.gameObject.tag);
+        GameManager g = GameObject.Find("GameManager").GetComponent<GameManager>();
+        g.ShieldHealth(other);
+
+    }
 	
 	public override void DoAttack()
 	{
 		transform.GetComponent<SpriteRenderer>().color = Color.white;
 		transform.GetComponent<Collider2D>().enabled = true;
+
+        StartCoroutine(Reflection());
 	}
-	
-	public override void CancelAttack()
+
+    IEnumerator Reflection()
+    {
+        Debug.Log("Reflective");
+        Invoke("ReflectShield", 1);
+        reflective = true;
+        yield return 0;
+    }
+
+    void ReflectShield()
+    {
+        reflective = false;
+        Debug.Log("Shield Reflective");
+    }
+
+    public override void CancelAttack()
 	{
 		transform.GetComponent<SpriteRenderer>().color = Color.clear;
 		transform.GetComponent<Collider2D>().enabled = false;

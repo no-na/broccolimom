@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public ShieldControl2 shield;
+    public AttackShield shield;
     public GameObject shieldObj;
     public SpriteRenderer shieldRen;
 
@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        shield = GameObject.Find("Circle").GetComponent<ShieldControl2>();
-        shieldRen = GameObject.Find("Circle").GetComponent<SpriteRenderer>();
+        shield = GameObject.Find("Shield").GetComponent<AttackShield>();
+        shieldRen = GameObject.Find("Shield").GetComponent<SpriteRenderer>();
         Debug.Log(shield);
         shieldObj = transform.gameObject;
     }
@@ -27,7 +27,18 @@ public class GameManager : MonoBehaviour
             shield.health -= 1;
             Debug.Log(shield.health);
         }
-        else if (shield.health == 0)
+        else if (shield.health >= 1 && target.gameObject.tag == "Projectile" && shield.reflective == true)
+        {
+            float opp_force = 5;
+            // Calculate angle between the collision and the shield
+            var opp_direction = transform.position - target.transform.position;
+            // We then get the opposite (-Vector3) and normalize it
+            opp_direction.Normalize();
+            // add force in the opposite direction and multiply it by force. 
+            // This will push back the projectile
+            target.GetComponent<Rigidbody>().AddForce(opp_direction * opp_force);
+        }
+        else if (shield.health < 1)
         {
             Debug.Log("Zero");
 

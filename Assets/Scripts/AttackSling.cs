@@ -5,18 +5,44 @@ using UnityEngine;
 [RequireComponent( typeof( BoxCollider2D ))]
 public class AttackSling : Attack {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject Bullet;
+    public Transform FirePoint;
+    public GameObject character; // Player is the GameObject it follows
+    public GameObject slingshot; // Player is the GameObject
+    public float accel; //accel changes the speeed at which it rotates(joystick)
+    public int BulletSpeed;
+
+    // Use this for initialization
+    void Start () {
 		transform.GetComponent<SpriteRenderer>().color = Color.clear;
 		transform.GetComponent<Collider2D>().enabled = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-	
-	void OnTriggerEnter2D(Collider2D other)
+	void Update ()
+    {
+        bulletspawn(FirePoint);
+        BulletShot(Bullet, BulletSpeed, FirePoint);
+
+    }
+
+    void bulletspawn(Transform child)
+    {
+
+        child.localPosition = new Vector3(Input.GetAxisRaw("Horizontal2"),
+            Input.GetAxisRaw("Vertical2"), accel * Time.deltaTime);
+    }
+
+    void BulletShot(GameObject projectile, int Speed, Transform parent)
+    {
+        if (Input.GetButtonDown("Fire"))
+        {
+            Instantiate(projectile, parent.position, parent.rotation);
+
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
 	{
 		//something has collided with the monster
 
