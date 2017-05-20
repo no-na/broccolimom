@@ -18,7 +18,7 @@ public class EnemyBullet : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
 
 
-        rb2d.AddForce(direction * bulletForce);
+        rb2d.velocity = direction * bulletForce;
 
 
     }
@@ -34,6 +34,10 @@ public class EnemyBullet : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+
+
+
+        rb2d.velocity = direction * bulletForce;
 
     }
 
