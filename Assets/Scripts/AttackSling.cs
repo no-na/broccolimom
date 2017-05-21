@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent( typeof( BoxCollider2D ))]
 public class AttackSling : Attack {
 
-    public GameObject bullet;
-    public Transform firePoint;
+    public GameObject Bullet;
+    public Transform FirePoint;
     public GameObject character; // Player is the GameObject it follows
     public GameObject slingshot; // Player is the GameObject
     public float accel; //accel changes the speeed at which it rotates(joystick)
-    public int bulletSpeed;
+    public int BulletSpeed;
 
     // Use this for initialization
     void Start () {
@@ -21,19 +21,19 @@ public class AttackSling : Attack {
 	// Update is called once per frame
 	void Update ()
     {
-        BulletSpawn(firePoint);
-        BulletShot(bullet, bulletSpeed, firePoint);
+        bulletspawn(FirePoint);
+        BulletShot(Bullet, BulletSpeed, FirePoint);
 
     }
 
-    void BulletSpawn(Transform child)
+    void bulletspawn(Transform child)
     {
 
         child.localPosition = new Vector3(Input.GetAxisRaw("Horizontal2"),
             Input.GetAxisRaw("Vertical2"), accel * Time.deltaTime);
     }
 
-    void BulletShot(GameObject projectile, int speed, Transform parent)
+    void BulletShot(GameObject projectile, int Speed, Transform parent)
     {
         if (Input.GetButtonDown("Fire"))
         {
