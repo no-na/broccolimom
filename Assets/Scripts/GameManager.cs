@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         }
         else if (shield.health >= 1 && target.gameObject.tag == "Projectile" && shield.reflective == true)
         {
+            Debug.Log("bounce");
             float opp_force = 5;
             // Calculate angle between the collision and the shield
             var opp_direction = transform.position - target.transform.position;
