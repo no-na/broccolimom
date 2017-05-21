@@ -166,5 +166,10 @@ public class DemoScene : MonoBehaviour
         {
             health -= 1;
         }
+        else if (strOther == "AnglerFishTrigger")
+        {
+
+            health -= 2;
+        }
     }
 }
