@@ -4,16 +4,55 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
     public float bulletForce = 200.0f;
-
-    void OnTriggerEnter2D (Collider2D target)
+	public float bulletLife = 2;
+	public string enemyTag;
+	
+	private Vector2 me;
+	private Rigidbody2D rb2d;
+	private int damage = 4;
+	
+	
+	void Start()
     {
-        if (target.gameObject.tag == "FirePoint")
+        rb2d = GetComponent<Rigidbody2D>();
+		me = new Vector2(Input.GetAxisRaw("Horizontal2"),
+        Input.GetAxisRaw("Vertical2"));
+		
+		if( me.x == 0 && me.y == 0)
+		{
+			me = new Vector2(1,0);
+		}
+
+
+        rb2d.velocity = me * bulletForce;
+
+
+    }
+	
+    void Update()
+    {
+        bulletLife -= Time.deltaTime;
+
+
+        if (bulletLife <= 0)
         {
-            Vector2 me = new Vector2(Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical"));
+            Destroy(this.gameObject);
+        }
 
-            GetComponent<Rigidbody2D>().AddForce(me * bulletForce);
 
+
+        rb2d.velocity = me * bulletForce;
+
+    }
+
+    //player collision!
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag ("Enemy"))
+        {
+			print("bullet collision");
+            bulletLife = 0;
+			other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
         }
     }
 }

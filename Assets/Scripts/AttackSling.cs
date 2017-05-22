@@ -70,14 +70,14 @@ public class AttackSling : Attack {
 			(
 				Input.GetAxisRaw("Horizontal2")*2,
 				Input.GetAxisRaw("Vertical2")*2, 
-				200 * Time.deltaTime
+				0
 			); 
 		else
 			transform.localPosition = new Vector3
 			(
 				Input.GetAxisRaw("Horizontal2")*-2,
 				Input.GetAxisRaw("Vertical2")*2, 
-				200 * Time.deltaTime
+				0
 			); 
 			
 		float rotation = 0f;
