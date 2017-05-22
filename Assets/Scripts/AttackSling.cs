@@ -35,7 +35,7 @@ public class AttackSling : Attack {
 
     void BulletShot(GameObject projectile, int speed, Transform parent)
     {
-        if (Input.GetButtonDown("Fire"))
+        if (Input.GetButtonDown("Fire2"))
         {
             Instantiate(projectile, parent.position, parent.rotation);
 
