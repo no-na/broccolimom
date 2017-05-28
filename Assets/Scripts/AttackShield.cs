@@ -50,7 +50,7 @@ public class AttackShield : Attack {
     IEnumerator Reflection()
     {
         Debug.Log("Reflective");
-        Invoke("ReflectShield", 1);
+        Invoke("ReflectShield", .25f);
         reflective = true;
         yield return 0;
     }

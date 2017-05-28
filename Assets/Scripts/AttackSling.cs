@@ -22,7 +22,9 @@ public class AttackSling : Attack {
 	void Update ()
     {
         BulletSpawn(firePoint);
-        BulletShot(bullet, bulletSpeed, firePoint);
+
+        InvokeRepeating("BulletTimedShot", 0, 0.3f);
+        //BulletShot(bullet, bulletSpeed, firePoint);
 
     }
 
@@ -31,6 +33,11 @@ public class AttackSling : Attack {
 
         child.localPosition = new Vector3(Input.GetAxisRaw("Horizontal2"),
             Input.GetAxisRaw("Vertical2"), accel * Time.deltaTime);
+    }
+
+    void BulletTimedShot()
+    {
+        BulletShot(bullet, bulletSpeed, firePoint);
     }
 
     void BulletShot(GameObject projectile, int speed, Transform parent)
