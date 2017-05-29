@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour {
     void Update()
     {
         bulletLife -= Time.deltaTime;
+		rb2d.velocity = me * bulletForce;
 
 
         if (bulletLife <= 0)
@@ -41,7 +42,7 @@ public class Bullet : MonoBehaviour {
 
 
 
-        rb2d.velocity = me * bulletForce;
+        
 
     }
 
