@@ -9,8 +9,9 @@ public class AttackSling : Attack {
     public Transform firePoint;
     public GameObject character; // Player is the GameObject it follows
     public GameObject slingshot; // Player is the GameObject
-    public float accel; //accel changes the speeed at which it rotates(joystick)
+    public float accel; //accel changes the speed at which it rotates(joystick)
     public int bulletSpeed;
+    public bool stateSwitch = false;
 
     // Use this for initialization
     void Start () {
@@ -23,7 +24,15 @@ public class AttackSling : Attack {
     {
         BulletSpawn(firePoint);
 
-        InvokeRepeating("BulletTimedShot", 0, 0.3f);
+        if (stateSwitch == false)
+        {
+            InvokeRepeating("BulletTimedShot", 0, 0.3f);
+        }
+        else if (stateSwitch == true) //SANIC
+        {
+            InvokeRepeating("BulletTimedShot", 0, 0.15f);
+        }
+
         //BulletShot(bullet, bulletSpeed, firePoint);
 
     }
@@ -56,9 +65,26 @@ public class AttackSling : Attack {
 		if (other.gameObject.CompareTag ("Enemy")) {
 			other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
 		}
-	}
-	
-	public override void DoAttack()
+        else if (other.gameObject.name =="RapidFire")
+        {
+            StartCoroutine(RapidShot());
+        }
+    }
+    IEnumerator RapidShot()
+    {
+        Debug.Log("Rapid Firing");
+        Invoke("NormalShot", 2);
+        stateSwitch = true;
+        yield return 0;
+    }
+
+    void NormalShot()
+    {
+        stateSwitch = false;
+        Debug.Log("Normal shot");
+    }
+
+    public override void DoAttack()
 	{
 		transform.GetComponent<SpriteRenderer>().color = Color.white;
 		transform.GetComponent<Collider2D>().enabled = true;
