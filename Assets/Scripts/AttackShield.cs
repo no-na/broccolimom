@@ -10,6 +10,7 @@ public class AttackShield : Attack {
     public float accel; //accel changes the speeed at which it rotates (joystick)
     public int health = 3;
     public bool reflective = false;
+    //public Color perfectFrame = new Color(238f, 121f, 119f, 1f);
 
     // Use this for initialization
     void Start () {
@@ -44,7 +45,11 @@ public class AttackShield : Attack {
 		transform.GetComponent<SpriteRenderer>().color = Color.white;
 		transform.GetComponent<Collider2D>().enabled = true;
 
-        StartCoroutine(Reflection());
+        if (Input.GetButtonDown("Fire"))
+        {
+            StartCoroutine(Reflection());
+        }
+        
 	}
 
     IEnumerator Reflection()
@@ -52,12 +57,14 @@ public class AttackShield : Attack {
         Debug.Log("Reflective");
         Invoke("ReflectShield", .25f);
         reflective = true;
+        transform.GetComponent<SpriteRenderer>().color = Color.red;
         yield return 0;
     }
 
     void ReflectShield()
     {
         reflective = false;
+        transform.GetComponent<SpriteRenderer>().color = Color.white;
         Debug.Log("Shield Reflective");
     }
 
@@ -69,7 +76,7 @@ public class AttackShield : Attack {
 	
 	public override void Aim()
 	{
-		if (transform.parent.localScale.x > 0)
+        if (transform.parent.localScale.x > 0)
 			transform.localPosition = new Vector3
 			(
 				Input.GetAxisRaw("Horizontal")*2,
@@ -94,6 +101,6 @@ public class AttackShield : Attack {
 		else
 			rotation = 120f;
 		transform.localEulerAngles = new Vector3(0f,0f,rotation);
-	}
+    }
 	
 }
