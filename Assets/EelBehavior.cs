@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClamBehavior : MonoBehaviour {
-
+public class EelBehavior : MonoBehaviour {
     private bool isActive = false;
 
-    public GameObject target1;
-    public GameObject target2;
+    public GameObject target;
 
     public float spitInterval;
     private float spitTimer;
 
     public GameObject spitPoint;
-    
 
     public GameObject inkPrefab;
 
@@ -26,22 +23,22 @@ public class ClamBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+         
 
 
-            Vector2 aimPoint = (target1.transform.position + target2.transform.position) / 2;
+        Vector2 aimPoint = target.transform.position;
 
-            //rotate towards the aim point
-            transform.up = aimPoint - (Vector2)transform.position;
+        //rotate towards the aim point
+        transform.up = aimPoint - (Vector2)transform.position;
 
 
-            spitTimer -= Time.deltaTime;
-            if (spitTimer <= 0)
-            {
-                spitTimer = spitInterval;
-                Spit();
-            }
-        
+        spitTimer -= Time.deltaTime;
+        if (spitTimer <= 0)
+        {
+            spitTimer = spitInterval;
+            Spit();
+        }
+
 
     }
 
@@ -61,9 +58,6 @@ public class ClamBehavior : MonoBehaviour {
 
         EnemyBullet ebull = eb.GetComponent<EnemyBullet>();
         ebull.direction = spitAngle;
-
-        //addforce
-        //Rigidbody2D ebrb = eb.GetComponent<Rigidbody2D>();
     }
-    
+
 }
