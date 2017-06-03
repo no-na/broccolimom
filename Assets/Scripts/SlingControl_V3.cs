@@ -10,7 +10,9 @@ public class SlingControl_V3 : MonoBehaviour {
     public GameObject slingshot; // Player is the GameeObject it follows
     public float accel; //accel changes the speeed at which it rotates
     public int BulletSpeed;
-
+	//Tom's additions
+	public bool rapid = false;
+	public bool scatter = false;
 
     void Start()
     {

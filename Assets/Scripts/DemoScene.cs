@@ -10,8 +10,13 @@ public class DemoScene : MonoBehaviour
 	public float groundDamping = 20f; // how fast do we change direction? higher means faster
 	public float inAirDamping = 5f;
 	public float jumpHeight = 3f;
-    //health config
-    public float health = 6f;
+    //Tom's additions - identifiers, powerup booleans, health
+    public int health;
+	public string character;
+	public bool hasPowerup = false;
+	float powerupEndTime;
+	public bool invincible = false;
+
 
 	[SerializeField]
 	private string controllerName = "";
@@ -46,6 +51,7 @@ public class DemoScene : MonoBehaviour
 
 	void onControllerCollider( RaycastHit2D hit )
 	{
+
 		// bail out on plain old ground hits cause they arent very interesting
 		if( hit.normal.y == 1f )
 			return;
@@ -149,22 +155,95 @@ public class DemoScene : MonoBehaviour
 		_velocity.y += gravity * Time.deltaTime;
 
 		_controller.move( _velocity * Time.deltaTime );
+
+		if (health == 0) {
+			Debug.Log("dead");
+		}
+
+		//powerup duration checks
+		float powerupTimeLeft = powerupEndTime - Time.time;
+		if (powerupTimeLeft <= 0) {
+			//turn off invincible
+			if(invincible == true){
+				invincible = false;
+			}
+			//turn off reflection
+
+			//turn off rapid fire
+
+			//turn off scattershot
+
+			hasPowerup = false;
+		}
 	}
-    //collisions!!!!
-    void OnTriggerEnter2d(Collider2D other)
+
+
+	//general damage
+	void DamagePlayer (int damage){
+		if(invincible == false){
+			health -= damage;
+			if (health < 0) {
+				health = 0;
+			}
+		}
+	}
+
+    //collisions
+    void OnCollisionEnter2D(Collision2D other)
     {
-        string strOther = other.gameObject.GetType().ToString();
-        if (strOther == "EnemyBullet")
-        {
-            health -= 1;
-        }
-        else if (strOther == "Shark")
-        {
-            health -= 1;
-        }
-        else if (strOther == "PufferFish")
-        {
-            health -= 1;
-        }
+		//enemy collisions
+		if (other.gameObject.tag == "Enemy") {
+			//add if statements to check enemy type and change how much damage is done
+			if (other.gameObject.GetComponent<Enemy>().eType == "EnemyBullet") {
+				DamagePlayer (1);
+				Destroy (other.gameObject);
+			}
+			else if (other.gameObject.GetComponent<Enemy>().eType == "PufferFish"){
+				//code goes here
+			}
+			else if (other.gameObject.GetComponent<Enemy>().eType == "Shark"){
+				DamagePlayer (2);
+				Destroy (other.gameObject);
+			}
+			else if (other.gameObject.GetComponent<Enemy>().eType == "Anglerfish"){
+				DamagePlayer (2);
+				Destroy (other.gameObject);
+			}
+			//DamagePlayer (1);
+			//Destroy (other.gameObject);
+		}
+
+		//powerup collision
+		if (other.gameObject.tag == "Powerup") {
+			//brother
+			if (this.gameObject.GetComponent<DemoScene> ().character == "Brother") {
+				
+				//type 1: scattershot
+				if (other.gameObject.GetComponent<Powerup> ().variant == 1) {
+					powerupEndTime = Time.time + 5;
+					hasPowerup = true;
+					//access sling control and set scatter to true
+				}
+				//type 2: rapid fire
+				/*if (other.gameObject.GetComponent<Powerup> ().variant == 2) {
+					powerupEndTime = Time.time + 5;
+					hasPowerup = true;
+					//access sling control and set rapid to true
+				}*/
+			}
+			//sister
+			if (this.gameObject.GetComponent<DemoScene> ().character == "Sister") {
+				//type 1:invincibility
+				if (other.gameObject.GetComponent<Powerup> ().variant == 1) {
+					powerupEndTime = Time.time + 5;
+					invincible = true;
+					hasPowerup = true;
+				}
+				//type 2: reflection
+				/*if (other.gameObject.GetComponent<Powerup> ().variant == 2) {
+
+				}*/
+			}
+		}
     }
 }
