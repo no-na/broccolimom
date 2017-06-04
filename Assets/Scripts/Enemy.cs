@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 	
 	[SerializeField]
 	protected int health;
+	public string eType;
 
 	// Use this for initialization
 	void Start () {

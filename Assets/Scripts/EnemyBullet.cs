@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyBullet : MonoBehaviour {
+public class EnemyBullet : Enemy {
 
     public float bulletForce = 200.0f;
     public Vector2 direction = Vector2.left;
@@ -15,11 +15,15 @@ public class EnemyBullet : MonoBehaviour {
 
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+		eType = "EnemyBullet";
 
+		this.gameObject.tag = "Enemy";
+		this.gameObject.layer = 10;
+
+		rb2d = GetComponent<Rigidbody2D>();
 
         rb2d.velocity = direction * bulletForce;
-
+		rb2d.isKinematic = false;
 
     }
 
@@ -41,12 +45,11 @@ public class EnemyBullet : MonoBehaviour {
 
     }
 
-    //player collision!
-    void OnTriggerEnter2d(Collider2D other)
-    {
-        if (other.gameObject.CompareTag (playerTag))
-        {
-            bulletLife = 0;
-        }
-    }
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		//ignore the collision w/ other enemies
+		if (other.gameObject.tag == "Enemy") {
+			Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
+		}
+	}
 }
