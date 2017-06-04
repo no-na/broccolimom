@@ -12,6 +12,7 @@ public class AttackSling : Attack {
     public float accel; //accel changes the speed at which it rotates(joystick)
     public int bulletSpeed;
     public bool stateSwitch = false;
+	private bool canFire = true;
 
     // Use this for initialization
     void Start ()
@@ -37,13 +38,13 @@ public class AttackSling : Attack {
 
     void BulletShot(GameObject projectile, int speed, Transform parent)
     {
-        if (Input.GetButton("Fire2") && stateSwitch == false)
+        if (Input.GetButton("Fire2") && stateSwitch == false && canFire == true)
         {
             Instantiate(projectile, parent.position, parent.rotation);
             StartCoroutine(PreFire());
         }
 
-        if (Input.GetButton("Fire2") && stateSwitch == false)
+        if (Input.GetButton("Fire2") && stateSwitch == false && canFire == true)
         {
             Instantiate(projectile, parent.position, parent.rotation);
             StartCoroutine(PreFire());
@@ -55,11 +56,16 @@ public class AttackSling : Attack {
     {
         if (stateSwitch == false)
         {
+			canFire = false;
             yield return new WaitForSeconds(0.3f);
+			canFire = true;
+			
         }
         else if (stateSwitch == true)
         {
+			canFire = false;
             yield return new WaitForSeconds(0.15f);
+			canFire = true;
         }
     }
 
