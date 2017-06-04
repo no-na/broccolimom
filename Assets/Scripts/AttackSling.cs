@@ -14,7 +14,8 @@ public class AttackSling : Attack {
     public bool stateSwitch = false;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		transform.GetComponent<SpriteRenderer>().color = Color.clear;
 		transform.GetComponent<Collider2D>().enabled = false;
 	}
@@ -24,37 +25,41 @@ public class AttackSling : Attack {
     {
         BulletSpawn(firePoint);
 
-        if (stateSwitch == false)
-        {
-            InvokeRepeating("BulletTimedShot", 0, 0.3f);
-        }
-        else if (stateSwitch == true) //SANIC
-        {
-            InvokeRepeating("BulletTimedShot", 0, 0.15f);
-        }
-
-        //BulletShot(bullet, bulletSpeed, firePoint);
+        BulletShot(bullet, bulletSpeed, firePoint);
 
     }
 
     void BulletSpawn(Transform child)
     {
-
         child.localPosition = new Vector3(Input.GetAxisRaw("Horizontal2"),
             Input.GetAxisRaw("Vertical2"), accel * Time.deltaTime);
     }
 
-    void BulletTimedShot()
-    {
-        BulletShot(bullet, bulletSpeed, firePoint);
-    }
-
     void BulletShot(GameObject projectile, int speed, Transform parent)
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButton("Fire2") && stateSwitch == false)
         {
             Instantiate(projectile, parent.position, parent.rotation);
+            StartCoroutine(PreFire());
+        }
 
+        if (Input.GetButton("Fire2") && stateSwitch == false)
+        {
+            Instantiate(projectile, parent.position, parent.rotation);
+            StartCoroutine(PreFire());
+        }
+
+    }
+
+    IEnumerator PreFire()
+    {
+        if (stateSwitch == false)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        else if (stateSwitch == true)
+        {
+            yield return new WaitForSeconds(0.15f);
         }
     }
 
