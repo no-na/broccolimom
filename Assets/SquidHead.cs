@@ -12,14 +12,14 @@ public class SquidHead : MonoBehaviour {
     public float spitInterval;
     private float spitTimer;
 
-    private GameObject spitPoint;
+    public GameObject spitPoint;
 
     public GameObject inkPrefab;
 
     // Use this for initialization
     void Start()
     {
-        spitPoint = GameObject.Find("SpitPoint");
+        //spitPoint = GameObject.Find("SpitPoint");
         spitTimer = spitInterval;
     }
 
@@ -58,6 +58,13 @@ public class SquidHead : MonoBehaviour {
 
         //create the inkbullet
         GameObject eb = Instantiate(inkPrefab, spitPoint.transform.position, new Quaternion());
+
+        //figure out what the heck the angle is
+        Vector2 spitAngle = spitPoint.transform.position - this.transform.position;
+        spitAngle = spitAngle.normalized;
+
+        EnemyBullet ebull = eb.GetComponent<EnemyBullet>();
+        ebull.direction = spitAngle;
 
         //addforce
         Rigidbody2D ebrb = eb.GetComponent<Rigidbody2D>(); 
