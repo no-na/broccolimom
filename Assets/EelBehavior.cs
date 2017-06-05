@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EelBehavior : MonoBehaviour {
+public class EelBehavior : Enemy {
     private bool isActive = false;
 
     public GameObject target;
 
     public float spitInterval;
     private float spitTimer;
+
+    private bool isSpitting = false;
+    public Animator anim;
 
     public GameObject spitPoint;
 
@@ -20,25 +23,32 @@ public class EelBehavior : MonoBehaviour {
         spitTimer = spitInterval;
     }
 
+    public override void Go()
+    {
+        isSpitting = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-         
-
 
         Vector2 aimPoint = target.transform.position;
 
         //rotate towards the aim point
         transform.up = aimPoint - (Vector2)transform.position;
 
-
-        spitTimer -= Time.deltaTime;
-        if (spitTimer <= 0)
+        if (isSpitting)
         {
-            spitTimer = spitInterval;
-            Spit();
-        }
 
+
+
+            spitTimer -= Time.deltaTime;
+            if (spitTimer <= 0)
+            {
+                spitTimer = spitInterval;
+                Spit();
+            }
+        }
 
     }
 
@@ -48,7 +58,7 @@ public class EelBehavior : MonoBehaviour {
 
         //aim the mouth
 
-
+        anim.SetTrigger("attack");
         //create the inkbullet
         GameObject eb = Instantiate(inkPrefab, this.transform.position, new Quaternion());
 
