@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class DemoScene : MonoBehaviour
@@ -12,9 +13,13 @@ public class DemoScene : MonoBehaviour
 	public float jumpHeight = 3f;
     //Tom's additions - identifiers, powerup booleans, health
     public int health;
+	[SerializeField]
+	private Text healthUI;
+
 	public string character;
 	public bool hasPowerup = false;
-	float powerupEndTime;
+	public Powerup activePowerup;
+	public float powerupEndTime;
 	public bool invincible = false;
 
 
@@ -64,6 +69,19 @@ public class DemoScene : MonoBehaviour
 	void onTriggerEnterEvent( Collider2D col )
 	{
 		Debug.Log( "onTriggerEnterEvent: " + col.gameObject.name );
+		
+		
+		//powerup collision
+		if (col.gameObject.tag == "Powerup") {
+			Powerup powerup = col.gameObject.GetComponent<Powerup> ();
+			powerup.SetPlayer(gameObject);
+			if(powerup.IsRelevant()){
+				activePowerup = powerup;
+				powerup.ApplyPowerup();
+				powerupEndTime = 400f;
+				hasPowerup = true;
+			}
+		}
 	}
 
 
@@ -129,7 +147,7 @@ public class DemoScene : MonoBehaviour
 		
 		
 		
-		if( Input.GetButton("Fire"+controllerName))
+		if( Input.GetButtonDown("Fire"+controllerName))
 		{
 			_attack.DoAttack();
 		}
@@ -160,20 +178,26 @@ public class DemoScene : MonoBehaviour
 			Debug.Log("dead");
 		}
 
+
+	}
+	
+	void FixedUpdate(){
 		//powerup duration checks
-		float powerupTimeLeft = powerupEndTime - Time.time;
-		if (powerupTimeLeft <= 0) {
-			//turn off invincible
-			if(invincible == true){
-				invincible = false;
+		if(hasPowerup){
+			powerupEndTime -= 1;
+			if (powerupEndTime <= 0) {
+				//turn off invincible
+				if(invincible == true){
+					invincible = false;
+				}
+				//turn off reflection
+
+				//turn off rapid fire
+
+				//turn off scattershot
+				activePowerup.RemovePowerup();
+				hasPowerup = false;
 			}
-			//turn off reflection
-
-			//turn off rapid fire
-
-			//turn off scattershot
-
-			hasPowerup = false;
 		}
 	}
 
@@ -193,6 +217,7 @@ public class DemoScene : MonoBehaviour
     {
 		//enemy collisions
 		if (other.gameObject.tag == "Enemy") {
+			print("enemy collision");
 			//add if statements to check enemy type and change how much damage is done
 			if (other.gameObject.GetComponent<Enemy>().eType == "EnemyBullet") {
 				DamagePlayer (1);
@@ -213,37 +238,6 @@ public class DemoScene : MonoBehaviour
 			//Destroy (other.gameObject);
 		}
 
-		//powerup collision
-		if (other.gameObject.tag == "Powerup") {
-			//brother
-			if (this.gameObject.GetComponent<DemoScene> ().character == "Brother") {
-				
-				//type 1: scattershot
-				if (other.gameObject.GetComponent<Powerup> ().variant == 1) {
-					powerupEndTime = Time.time + 5;
-					hasPowerup = true;
-					//access sling control and set scatter to true
-				}
-				//type 2: rapid fire
-				/*if (other.gameObject.GetComponent<Powerup> ().variant == 2) {
-					powerupEndTime = Time.time + 5;
-					hasPowerup = true;
-					//access sling control and set rapid to true
-				}*/
-			}
-			//sister
-			if (this.gameObject.GetComponent<DemoScene> ().character == "Sister") {
-				//type 1:invincibility
-				if (other.gameObject.GetComponent<Powerup> ().variant == 1) {
-					powerupEndTime = Time.time + 5;
-					invincible = true;
-					hasPowerup = true;
-				}
-				//type 2: reflection
-				/*if (other.gameObject.GetComponent<Powerup> ().variant == 2) {
-
-				}*/
-			}
-		}
+		
     }
 }

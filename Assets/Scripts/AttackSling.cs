@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent( typeof( BoxCollider2D ))]
+//[RequireComponent( typeof( BoxCollider2D ))]
 public class AttackSling : Attack {
 
     public GameObject bullet;
@@ -10,23 +10,16 @@ public class AttackSling : Attack {
     public GameObject character; // Player is the GameObject it follows
     public GameObject slingshot; // Player is the GameObject
     public float accel; //accel changes the speed at which it rotates(joystick)
-    public int bulletSpeed;
     public bool stateSwitch = false;
 	private bool canFire = true;
-
-    // Use this for initialization
-    void Start ()
-    {
-		transform.GetComponent<SpriteRenderer>().color = Color.clear;
-		transform.GetComponent<Collider2D>().enabled = false;
-	}
+	public float bulletDelay = 0.3f;
 	
 	// Update is called once per frame
 	void Update ()
     {
         BulletSpawn(firePoint);
 
-        BulletShot(bullet, bulletSpeed, firePoint);
+        BulletShot(bullet, firePoint);
 
     }
 
@@ -36,40 +29,23 @@ public class AttackSling : Attack {
             Input.GetAxisRaw("Vertical2"), accel * Time.deltaTime);
     }
 
-    void BulletShot(GameObject projectile, int speed, Transform parent)
+    void BulletShot(GameObject projectile, Transform parent)
     {
         if (Input.GetButton("Fire2") && stateSwitch == false && canFire == true)
         {
             Instantiate(projectile, parent.position, parent.rotation);
-            StartCoroutine(PreFire());
+            StartCoroutine(StartDelay());
         }
-
-        if (Input.GetButton("Fire2") && stateSwitch == false && canFire == true)
-        {
-            Instantiate(projectile, parent.position, parent.rotation);
-            StartCoroutine(PreFire());
-        }
-
     }
 
-    IEnumerator PreFire()
+    IEnumerator StartDelay()
     {
-        if (stateSwitch == false)
-        {
 			canFire = false;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(bulletDelay);
 			canFire = true;
-			
-        }
-        else if (stateSwitch == true)
-        {
-			canFire = false;
-            yield return new WaitForSeconds(0.15f);
-			canFire = true;
-        }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+/*     void OnTriggerEnter2D(Collider2D other)
 	{
 		//something has collided with the monster
 
@@ -80,7 +56,8 @@ public class AttackSling : Attack {
         {
             StartCoroutine(RapidShot());
         }
-    }
+    } */
+	
     IEnumerator RapidShot()
     {
         Debug.Log("Rapid Firing");
@@ -97,14 +74,14 @@ public class AttackSling : Attack {
 
     public override void DoAttack()
 	{
-		transform.GetComponent<SpriteRenderer>().color = Color.white;
-		transform.GetComponent<Collider2D>().enabled = true;
+		//transform.GetComponent<SpriteRenderer>().color = Color.white;
+		//transform.GetComponent<Collider2D>().enabled = true;
 	}
 	
 	public override void CancelAttack()
 	{
-		transform.GetComponent<SpriteRenderer>().color = Color.clear;
-		transform.GetComponent<Collider2D>().enabled = false;
+		//transform.GetComponent<SpriteRenderer>().color = Color.clear;
+		//transform.GetComponent<Collider2D>().enabled = false;
 	}
 	
 	public override void Aim()
@@ -134,5 +111,13 @@ public class AttackSling : Attack {
 		else
 			rotation = 120f;
 		transform.localEulerAngles = new Vector3(0f,0f,rotation);
+	}
+	
+	public float GetBulletDelay(){
+		return bulletDelay;
+	}
+	
+	public void SetBulletDelay(float delay){
+		bulletDelay = delay;
 	}
 }
