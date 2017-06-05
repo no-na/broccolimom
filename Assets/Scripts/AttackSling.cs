@@ -13,6 +13,10 @@ public class AttackSling : Attack {
     public bool stateSwitch = false;
 	private bool canFire = true;
 	public float bulletDelay = 0.3f;
+	[SerializeField]
+	private AudioSource audioSource;
+	[SerializeField]
+	private List<AudioClip> audioSources;
 	
 	// Update is called once per frame
 	void Update ()
@@ -33,6 +37,8 @@ public class AttackSling : Attack {
     {
         if (Input.GetButton("Fire2") && stateSwitch == false && canFire == true)
         {
+			audioSource.clip = audioSources[0];
+			audioSource.Play();
             Instantiate(projectile, parent.position, parent.rotation);
             StartCoroutine(StartDelay());
         }

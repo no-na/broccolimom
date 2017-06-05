@@ -10,6 +10,10 @@ public class AttackShield : Attack {
     public float accel; //accel changes the speeed at which it rotates (joystick)
     public int health = 3;
     public bool reflective = false;
+	[SerializeField]
+	private AudioSource audioSource;
+	[SerializeField]
+	private List<AudioClip> audioSources;
     //public Color perfectFrame = new Color(238f, 121f, 119f, 1f);
 
     // Use this for initialization
@@ -44,6 +48,8 @@ public class AttackShield : Attack {
 	{
 		transform.GetComponent<SpriteRenderer>().color = Color.white;
 		transform.GetComponent<Collider2D>().enabled = true;
+		audioSource.clip = audioSources[0];
+		audioSource.Play();
 
         if (Input.GetButtonDown("Fire"))
         {

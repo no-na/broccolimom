@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 
@@ -36,6 +37,11 @@ public class DemoScene : MonoBehaviour
 	
 	[SerializeField]
 	private Attack _attack; //controls attacking, aiming
+	
+	[SerializeField]
+	private AudioSource audioSource;
+	[SerializeField]
+	private List<AudioClip> audioSources;
 
 
 
@@ -161,6 +167,8 @@ public class DemoScene : MonoBehaviour
 		if( _controller.isGrounded && Input.GetButtonDown("Jump"+controllerName) && gameObject.GetComponent<Animator>().GetBool("die") == false)
 		{
 			_velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
+			audioSource.clip = audioSources[0];
+			audioSource.Play();
 			_animator.Play( Animator.StringToHash( "Jump" ) );
 		}
 

@@ -22,7 +22,7 @@ public class SmoothFollow : MonoBehaviour
 
 	void Update()
 	{
-		if(xMin < transform.position.x)
+		if(xMin < transform.position.x && xMin < xMax)
 			xMin = transform.position.x;
 		
 		// Set position to midpoint

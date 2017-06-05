@@ -1,0 +1,426 @@
+fileFormatVersion: 2
+guid: 561af448348982447889961833c8e26b
+timeCreated: 1496646180
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlaceholderPowerups_0
+    21300002: PlaceholderPowerups_1
+    21300004: PlaceholderPowerups_2
+    21300006: PlaceholderPowerups_3
+    21300008: PlaceholderPowerups_4
+    21300010: PlaceholderPowerups_5
+    21300012: PlaceholderPowerups_6
+    21300014: PlaceholderPowerups_7
+    21300016: PlaceholderPowerups_8
+    21300018: PlaceholderPowerups_9
+    21300020: PlaceholderPowerups_10
+    21300022: PlaceholderPowerups_11
+    21300024: PlaceholderPowerups_12
+    21300026: PlaceholderPowerups_13
+    21300028: PlaceholderPowerups_14
+    21300030: PlaceholderPowerups_15
+    21300032: PlaceholderPowerups_16
+    21300034: PlaceholderPowerups_17
+    21300036: PlaceholderPowerups_18
+    21300038: PlaceholderPowerups_19
+    21300040: PlaceholderPowerups_20
+    21300042: PlaceholderPowerups_21
+    21300044: PlaceholderPowerups_22
+    21300046: PlaceholderPowerups_23
+    21300048: PlaceholderPowerups_24
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PlaceholderPowerups_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 341
+        width: 188
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 341
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_2
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 341
+        width: 190
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_3
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 341
+        width: 189
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_4
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 341
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_5
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 341
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_6
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 341
+        width: 191
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_7
+      rect:
+        serializedVersion: 2
+        x: 2216
+        y: 347
+        width: 188
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 148
+        width: 148
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_9
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 291
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_10
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 148
+        width: 149
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_11
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 147
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_12
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 147
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_13
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 146
+        width: 154
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_14
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 147
+        width: 150
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_15
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 147
+        width: 151
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_16
+      rect:
+        serializedVersion: 2
+        x: 2239
+        y: 153
+        width: 149
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_17
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 128
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_18
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 0
+        width: 128
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_19
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 0
+        width: 130
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_20
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 0
+        width: 128
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_21
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 0
+        width: 130
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_22
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 0
+        width: 128
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_23
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 2
+        width: 130
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: PlaceholderPowerups_24
+      rect:
+        serializedVersion: 2
+        x: 2251
+        y: 2
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
