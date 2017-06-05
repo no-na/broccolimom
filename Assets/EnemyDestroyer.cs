@@ -13,4 +13,22 @@ public class EnemyDestroyer : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Enemy s = other.gameObject.GetComponent<Enemy>();
+        if (s != null)
+        {
+
+            Destroy(other.gameObject);
+
+        }
+        EnemyBullet eb = other.gameObject.GetComponent<EnemyBullet>();
+        if (eb != null)
+        {
+
+            Destroy(other.gameObject);
+
+        }
+    }
 }
