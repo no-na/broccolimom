@@ -43,10 +43,10 @@ public class EelBehavior : Enemy {
     void Update()
     {
 
-        Vector2 aimPoint = target.transform.position;
+        //Vector2 aimPoint = target.transform.position;
 
         //rotate towards the aim point
-        transform.up = aimPoint - (Vector2)transform.position;
+       // transform.up = aimPoint - (Vector2)transform.position;
 
         if (isSpitting)
         {
