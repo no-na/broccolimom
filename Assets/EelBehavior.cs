@@ -23,6 +23,17 @@ public class EelBehavior : Enemy {
         spitTimer = spitInterval;
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Attack a = other.gameObject.GetComponent<MonoBehaviour>() as Attack;
+        if (a != null)
+        {
+
+            TakeDamage(a.Damage());
+        }
+
+    }
+
     public override void Go()
     {
         isSpitting = true;

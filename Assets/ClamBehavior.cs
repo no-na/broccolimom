@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClamBehavior : MonoBehaviour {
+public class ClamBehavior : Enemy {
 
     private bool isActive = false;
 
@@ -21,6 +21,17 @@ public class ClamBehavior : MonoBehaviour {
     void Start()
     {
         spitTimer = spitInterval;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Attack a = other.gameObject.GetComponent<MonoBehaviour>() as Attack;
+        if (a != null)
+        {
+
+            TakeDamage(a.Damage());
+        }
+
     }
 
     // Update is called once per frame
