@@ -40,7 +40,7 @@ public class EnemyBullet : Enemy {
         }
 
 
-
+        transform.up = direction;
         rb2d.velocity = direction * bulletForce;
 
     }
