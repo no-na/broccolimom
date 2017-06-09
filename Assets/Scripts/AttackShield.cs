@@ -48,8 +48,8 @@ public class AttackShield : Attack {
 	{
 		transform.GetComponent<SpriteRenderer>().color = Color.white;
 		transform.GetComponent<Collider2D>().enabled = true;
-		audioSource.clip = audioSources[0];
-		audioSource.Play();
+		//audioSource.clip = audioSources[0];
+		//audioSource.Play();
 
         if (Input.GetButtonDown("Fire"))
         {

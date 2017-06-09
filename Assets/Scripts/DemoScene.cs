@@ -153,7 +153,7 @@ public class DemoScene : MonoBehaviour
 		
 		
 		
-		if( Input.GetButtonDown("Fire"+controllerName))
+		if( Input.GetButton("Fire"+controllerName))
 		{
 			_attack.DoAttack();
 		}
