@@ -227,18 +227,15 @@ public class DemoScene : MonoBehaviour
 		if (other.gameObject.tag == "Enemy") {
 			print("enemy collision");
 			//add if statements to check enemy type and change how much damage is done
-			if (other.gameObject.GetComponent<Enemy>().eType == "EnemyBullet") {
+			if (other.gameObject.GetComponent<Enemy> ().eType == "EnemyBullet") {
 				DamagePlayer (1);
 				Destroy (other.gameObject);
-			}
-			else if (other.gameObject.GetComponent<Enemy>().eType == "PufferFish"){
+			} else if (other.gameObject.GetComponent<Enemy> ().eType == "PufferFish") {
 				//code goes here
-			}
-			else if (other.gameObject.GetComponent<Enemy>().eType == "Shark"){
+			} else if (other.gameObject.GetComponent<Enemy> ().eType == "Shark") {
 				DamagePlayer (2);
 				Destroy (other.gameObject);
-			}
-			else if (other.gameObject.GetComponent<Enemy>().eType == "Anglerfish"){
+			} else if (other.gameObject.GetComponent<Enemy> ().eType == "Anglerfish") {
 				DamagePlayer (2);
 				Destroy (other.gameObject);
 			}

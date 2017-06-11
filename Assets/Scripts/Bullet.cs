@@ -48,12 +48,14 @@ public class Bullet : MonoBehaviour {
 
     //player collision!
     void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag ("Enemy"))
-        {
-			print("bullet collision");
-            bulletLife = 0;
-			other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-        }
+	{
+		if (other.gameObject.CompareTag ("Enemy")) {
+			if(other.gameObject.GetComponent<Enemy>()..EventType != "EnemyBullet" || other.gameObject.layer != "Trigger")
+			{
+				print ("bullet collision");
+				bulletLife = 0;
+				other.gameObject.GetComponent<Enemy> ().TakeDamage (damage);
+			}
+		}
     }
 }

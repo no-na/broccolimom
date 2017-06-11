@@ -48,7 +48,7 @@ public class EnemyBullet : Enemy {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		//ignore the collision w/ other enemies
-		if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Platform") {
+		if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Platform" || other.gameObject.layer == "Trigger") {
 			Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other.gameObject.GetComponent<Collider2D>());
 		}
 	}
