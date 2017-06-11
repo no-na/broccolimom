@@ -43,12 +43,12 @@ public class DemoScene : MonoBehaviour
 	[SerializeField]
 	private List<AudioClip> audioSources;
 
-
-
+    
 
 	void Awake()
 	{
 		_animator = GetComponent<Animator>();
+        _animator.SetInteger("state", 0);
 		_controller = GetComponent<CharacterController2D>();
 
 		// listen to some events for illustration purposes
@@ -118,13 +118,13 @@ public class DemoScene : MonoBehaviour
 			
 			normalizedHorizontalSpeed = 1;
 			if( transform.localScale.x < 0f )
-				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			
 			_attack.Aim();
 			
 			if( _controller.isGrounded )
-				_animator.Play( Animator.StringToHash( "Run" ) );
-		}
+                _animator.SetInteger("state", 1);
+        }
 		else if( Input.GetAxisRaw("Horizontal"+controllerName)<0 )
 		{
 			normalizedHorizontalSpeed = -1;
@@ -132,14 +132,14 @@ public class DemoScene : MonoBehaviour
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			_attack.Aim();
 			if( _controller.isGrounded )
-				_animator.Play( Animator.StringToHash( "Run" ) );
-		}
+                _animator.SetInteger("state", 1);
+        }
 		else
 		{
 			normalizedHorizontalSpeed = 0;
 
-			if( _controller.isGrounded )
-				_animator.Play( Animator.StringToHash( "Idle" ) );
+            if (_controller.isGrounded)
+                _animator.SetInteger("state", 0);
 		}
 		
 		if( Input.GetAxisRaw("Vertical"+controllerName)>0)
@@ -169,8 +169,8 @@ public class DemoScene : MonoBehaviour
 			_velocity.y = Mathf.Sqrt( 2f * jumpHeight * -gravity );
 			audioSource.clip = audioSources[0];
 			audioSource.Play();
-			_animator.Play( Animator.StringToHash( "Jump" ) );
-		}
+            _animator.SetInteger("state", 2);
+        }
 
 
 		// apply horizontal speed smoothing it
