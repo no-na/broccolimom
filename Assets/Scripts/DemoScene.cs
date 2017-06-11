@@ -117,8 +117,8 @@ public class DemoScene : MonoBehaviour
 		{
 			
 			normalizedHorizontalSpeed = 1;
-			if( transform.localScale.x < 0f )
-				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y, transform.localScale.z );
+			if( transform.localScale.x > 0f )
+				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			
 			_attack.Aim();
 			
@@ -128,7 +128,7 @@ public class DemoScene : MonoBehaviour
 		else if( Input.GetAxisRaw("Horizontal"+controllerName)<0 )
 		{
 			normalizedHorizontalSpeed = -1;
-			if( transform.localScale.x > 0f )
+			if( transform.localScale.x < 0f )
 				transform.localScale = new Vector3( -transform.localScale.x, transform.localScale.y, transform.localScale.z );
 			_attack.Aim();
 			if( _controller.isGrounded )
