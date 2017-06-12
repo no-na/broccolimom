@@ -7,6 +7,23 @@ public class GameManager : MonoBehaviour
     public AttackShield shield;
     public GameObject shieldObj;
     public SpriteRenderer shieldRen;
+	
+	public SmoothFollow smoothFollowScript;
+	public int deathAmount = 0; //0:no one is dead, 1:one is dead
+	public GameObject deathUI;
+	
+	public void PlayerDeath(GameObject deadPlayer){
+		if(deathAmount == 0){
+			if(deadPlayer.name == "Brother")
+				smoothFollowScript.brotherTransform = smoothFollowScript.sisterTransform; 
+			else
+				smoothFollowScript.sisterTransform = smoothFollowScript.brotherTransform; 
+			deathAmount += 1;
+		}
+		else if(deathAmount == 1){
+			deathUI.SetActive(true);
+		}
+	}
 
 
 

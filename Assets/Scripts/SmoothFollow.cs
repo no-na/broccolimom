@@ -15,10 +15,8 @@ public class SmoothFollow : MonoBehaviour
 	
 	
 	// The transforms of the players. Used to determine their midpoint.
-	[SerializeField]
-	private Transform sisterTransform;
-	[SerializeField]
-	private Transform brotherTransform;
+	public Transform sisterTransform;
+	public Transform brotherTransform;
 
 	void Update()
 	{
@@ -36,6 +34,7 @@ public class SmoothFollow : MonoBehaviour
 		);
 	}
 	
+
 	//returns the transform of the midpoint of the brother and sister.
 	//This point is what the camera focuses on.
 	Vector3 GetMidpoint()

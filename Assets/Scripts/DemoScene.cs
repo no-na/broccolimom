@@ -42,6 +42,8 @@ public class DemoScene : MonoBehaviour
 	private AudioSource audioSource;
 	[SerializeField]
 	private List<AudioClip> audioSources;
+	
+	public GameManager gameManager;
 
     
 
@@ -214,8 +216,11 @@ public class DemoScene : MonoBehaviour
 	void DamagePlayer (int damage){
 		if(invincible == false){
 			health -= damage;
-			if (health < 0) {
-				health = 0;
+			healthUI.text = health.ToString();
+			if (health <= 0) {
+				healthUI.text = "0";
+				gameManager.PlayerDeath(gameObject);
+				Destroy(gameObject);
 			}
 		}
 	}
