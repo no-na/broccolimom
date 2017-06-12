@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag ("Enemy")) {
-			if(other.gameObject.GetComponent<Enemy>()..EventType != "EnemyBullet" || other.gameObject.layer != "Trigger")
+			if(other.gameObject.GetComponent<Enemy>().eType != "EnemyBullet" || other.gameObject.layer != 13)
 			{
 				print ("bullet collision");
 				bulletLife = 0;
