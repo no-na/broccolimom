@@ -36,7 +36,8 @@ public class AttackShield : Attack {
 
 		if (other.gameObject.CompareTag ("Enemy"))
         {
-			other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			//other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+			Destroy(other.gameObject);
 
 		}
 
