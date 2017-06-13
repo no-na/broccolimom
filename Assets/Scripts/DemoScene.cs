@@ -90,6 +90,14 @@ public class DemoScene : MonoBehaviour
 				hasPowerup = true;
 			}
 		}
+		//shark collision detection
+		if (col.gameObject.tag == "Enemy") {
+			if (col.gameObject.GetComponent<Enemy> ().eType == "Shark") {
+				print("shark collision");
+				DamagePlayer (2);
+				Destroy (col.gameObject);
+			}
+		}
 	}
 
 
@@ -230,9 +238,10 @@ public class DemoScene : MonoBehaviour
 				Debug.Log ("enemy bullet hit");
 				DamagePlayer (1);
 				Destroy (other.gameObject);
-			} else if (other.gameObject.GetComponent<Enemy> ().eType == "PufferFish") {
-				//code goes here
+			/*} else if (other.gameObject.GetComponent<Enemy> ().eType == "PufferFish") {
+				//code goes here*/
 			} else if (other.gameObject.GetComponent<Enemy> ().eType == "Shark") {
+				//print("shark collision");
 				DamagePlayer (2);
 				Destroy (other.gameObject);
 			} else if (other.gameObject.GetComponent<Enemy> ().eType == "Anglerfish") {
