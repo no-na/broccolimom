@@ -17,6 +17,8 @@ public class AttackSling : Attack {
 	private AudioSource audioSource;
 	[SerializeField]
 	private List<AudioClip> audioSources;
+
+    public Animator anim;
 	
 	// Update is called once per frame
 	void Update ()
@@ -105,18 +107,30 @@ public class AttackSling : Attack {
 				Input.GetAxisRaw("Horizontal2")*-2,
 				Input.GetAxisRaw("Vertical2")*2, 
 				0
-			); 
-			
-		float rotation = 0f;
-		if(Input.GetAxisRaw("Vertical2") == 0)
-			rotation = 0f;
-		else if(Input.GetAxisRaw("Horizontal2") == 0)
-			rotation = 90f;
-		else if(Input.GetAxisRaw("Horizontal2") * Input.GetAxisRaw("Vertical2") > 0)
-			rotation = 45f;
-		else
-			rotation = 120f;
-		transform.localEulerAngles = new Vector3(0f,0f,rotation);
+			);
+
+        float rotation = 0f;
+        if (Input.GetAxisRaw("Vertical") == 0)
+        {
+            rotation = 0f;
+            anim.SetInteger("state", 3);
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rotation = 90f;
+            anim.SetInteger("state", 5);
+        }
+        else if (Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") > 0)
+        {
+            rotation = 45f;
+            anim.SetInteger("state", 4);
+        }
+        else
+        {
+            rotation = 120f;
+            anim.SetInteger("state", 6);
+        }
+        transform.localEulerAngles = new Vector3(0f,0f,rotation);
 	}
 	
 	public float GetBulletDelay(){

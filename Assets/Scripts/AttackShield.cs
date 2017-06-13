@@ -16,6 +16,8 @@ public class AttackShield : Attack {
 	private List<AudioClip> audioSources;
     //public Color perfectFrame = new Color(238f, 121f, 119f, 1f);
 
+    public Animator anim;
+
     // Use this for initialization
     void Start () {
 		transform.GetComponent<SpriteRenderer>().color = Color.clear;
@@ -98,14 +100,32 @@ public class AttackShield : Attack {
 			); 
 			
 		float rotation = 0f;
-		if(Input.GetAxisRaw("Vertical") == 0)
-			rotation = 0f;
-		else if(Input.GetAxisRaw("Horizontal") == 0)
-			rotation = 90f;
-		else if(Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") > 0)
-			rotation = 45f;
-		else
-			rotation = 120f;
+        if (Input.GetAxisRaw("Vertical") == 0)
+        {
+            rotation = 0f;
+            anim.SetInteger("state", 3);
+        }
+        else if (Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rotation = 90f;
+            anim.SetInteger("state", 5);
+        }
+        else if (Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") > 0)
+        {
+            rotation = 45f;
+            if (transform.parent.localScale.x < 0)
+                anim.SetInteger("state", 4);
+            else
+                anim.SetInteger("state", 6);
+        }
+        else
+        {
+            rotation = 120f;
+            if (transform.parent.localScale.x < 0)
+                anim.SetInteger("state", 6);
+            else
+                anim.SetInteger("state", 4);
+        }
 		transform.localEulerAngles = new Vector3(0f,0f,rotation);
     }
 	
