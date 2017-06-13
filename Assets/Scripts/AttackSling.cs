@@ -17,8 +17,6 @@ public class AttackSling : Attack {
 	private AudioSource audioSource;
 	[SerializeField]
 	private List<AudioClip> audioSources;
-
-    public Animator anim;
 	
 	// Update is called once per frame
 	void Update ()
@@ -82,51 +80,9 @@ public class AttackSling : Attack {
 
     public override void DoAttack()
 	{
-        //transform.GetComponent<SpriteRenderer>().color = Color.white;
-        //transform.GetComponent<Collider2D>().enabled = true;
-
-        Vector3 rotVec = transform.localEulerAngles;
-
-        int rot = (int)rotVec.z;
-
-        switch (rot)
-        {
-            case 0:
-                anim.SetInteger("state", 5);
-                break;
-            case 45:
-                if (transform.parent.localScale.x < 0)
-                {
-                    anim.SetInteger("state", 4);
-                }
-                else
-                {
-                    anim.SetInteger("state", 6);
-                }
-                break;
-            case 90:
-                anim.SetInteger("state", 3);
-                break;
-            case 120:
-                if (transform.parent.localScale.x < 0)
-                {
-                    anim.SetInteger("state", 6);
-                }
-                else
-                {
-                    anim.SetInteger("state", 4);
-                }
-                break;
-            // case 135:
-            //   anim.SetInteger("state", 6);
-            // break;
-            case 180:
-                anim.SetInteger("state", 7);
-                break;
-            default:
-                break;
-        }
-        }
+		//transform.GetComponent<SpriteRenderer>().color = Color.white;
+		//transform.GetComponent<Collider2D>().enabled = true;
+	}
 	
 	public override void CancelAttack()
 	{
@@ -139,36 +95,28 @@ public class AttackSling : Attack {
 		if (transform.parent.localScale.x > 0)
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal2")*2,
-				Input.GetAxisRaw("Vertical2")*2, 
+				Input.GetAxisRaw("Horizontal2"),
+				Input.GetAxisRaw("Vertical2"), 
 				0
 			); 
 		else
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal2")*-2,
-				Input.GetAxisRaw("Vertical2")*2, 
+				Input.GetAxisRaw("Horizontal2")*-1,
+				Input.GetAxisRaw("Vertical2"), 
 				0
-			);
-
-        float rotation = 0f;
-        if (Input.GetAxisRaw("Vertical") == 0)
-        {
-            rotation = 0f;
-        }
-        else if (Input.GetAxisRaw("Horizontal") == 0)
-        {
-            rotation = 90f;
-        }
-        else if (Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") > 0)
-        {
-            rotation = 45f;
-        }
-        else
-        {
-            rotation = 120f;
-        }
-        transform.localEulerAngles = new Vector3(0f,0f,rotation);
+			); 
+			
+		float rotation = 0f;
+		if(Input.GetAxisRaw("Vertical2") == 0)
+			rotation = 0f;
+		else if(Input.GetAxisRaw("Horizontal2") == 0)
+			rotation = 90f;
+		else if(Input.GetAxisRaw("Horizontal2") * Input.GetAxisRaw("Vertical2") > 0)
+			rotation = 45f;
+		else
+			rotation = 120f;
+		transform.localEulerAngles = new Vector3(0f,0f,rotation);
 	}
 	
 	public float GetBulletDelay(){

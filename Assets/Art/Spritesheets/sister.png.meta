@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: ac634cc4e12ae824d8f879ae5dcf498a
-timeCreated: 1494808691
+timeCreated: 1497363412
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: sister_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -100,7 +101,20 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sister_0
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 642
+        width: 356
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

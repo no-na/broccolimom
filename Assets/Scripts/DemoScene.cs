@@ -58,6 +58,10 @@ public class DemoScene : MonoBehaviour
 		_controller.onTriggerEnterEvent += onTriggerEnterEvent;
 		_controller.onTriggerExitEvent += onTriggerExitEvent;
 	}
+	
+	void Start(){
+		healthUI.text = health.ToString();
+	}
 
 
 	#region Event Listeners

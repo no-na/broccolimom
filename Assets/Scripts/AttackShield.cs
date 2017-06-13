@@ -132,15 +132,15 @@ public class AttackShield : Attack {
         if (transform.parent.localScale.x > 0)
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal")*2,
-				Input.GetAxisRaw("Vertical")*2, 
+				Input.GetAxisRaw("Horizontal"),
+				Input.GetAxisRaw("Vertical")*2f, 
 				200 * Time.deltaTime
 			); 
 		else
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal")*-2,
-				Input.GetAxisRaw("Vertical")*2, 
+				Input.GetAxisRaw("Horizontal")*-1,
+				Input.GetAxisRaw("Vertical")*1.2f, 
 				200 * Time.deltaTime
 			); 
 			
