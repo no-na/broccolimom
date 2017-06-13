@@ -37,7 +37,10 @@ public class ClamBehavior : Enemy {
     // Update is called once per frame
     void Update()
     {
-
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 
 
         Vector2 aimPoint = Vector2.zero;
