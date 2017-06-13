@@ -109,14 +109,14 @@ public class AttackShield : Attack {
         Debug.Log("Reflective");
         Invoke("ReflectShield", .25f);
         reflective = true;
-        transform.GetComponent<SpriteRenderer>().color = Color.red;
+        //transform.GetComponent<SpriteRenderer>().color = Color.red;
         yield return 0;
     }
 
     void ReflectShield()
     {
         reflective = false;
-        transform.GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.GetComponent<SpriteRenderer>().color = Color.white;
         Debug.Log("Shield Reflective");
     }
 

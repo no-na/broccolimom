@@ -82,9 +82,51 @@ public class AttackSling : Attack {
 
     public override void DoAttack()
 	{
-		//transform.GetComponent<SpriteRenderer>().color = Color.white;
-		//transform.GetComponent<Collider2D>().enabled = true;
-	}
+        //transform.GetComponent<SpriteRenderer>().color = Color.white;
+        //transform.GetComponent<Collider2D>().enabled = true;
+
+        Vector3 rotVec = transform.localEulerAngles;
+
+        int rot = (int)rotVec.z;
+
+        switch (rot)
+        {
+            case 0:
+                anim.SetInteger("state", 5);
+                break;
+            case 45:
+                if (transform.parent.localScale.x < 0)
+                {
+                    anim.SetInteger("state", 4);
+                }
+                else
+                {
+                    anim.SetInteger("state", 6);
+                }
+                break;
+            case 90:
+                anim.SetInteger("state", 3);
+                break;
+            case 120:
+                if (transform.parent.localScale.x < 0)
+                {
+                    anim.SetInteger("state", 6);
+                }
+                else
+                {
+                    anim.SetInteger("state", 4);
+                }
+                break;
+            // case 135:
+            //   anim.SetInteger("state", 6);
+            // break;
+            case 180:
+                anim.SetInteger("state", 7);
+                break;
+            default:
+                break;
+        }
+        }
 	
 	public override void CancelAttack()
 	{
@@ -113,22 +155,18 @@ public class AttackSling : Attack {
         if (Input.GetAxisRaw("Vertical") == 0)
         {
             rotation = 0f;
-            anim.SetInteger("state", 3);
         }
         else if (Input.GetAxisRaw("Horizontal") == 0)
         {
             rotation = 90f;
-            anim.SetInteger("state", 5);
         }
         else if (Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") > 0)
         {
             rotation = 45f;
-            anim.SetInteger("state", 4);
         }
         else
         {
             rotation = 120f;
-            anim.SetInteger("state", 6);
         }
         transform.localEulerAngles = new Vector3(0f,0f,rotation);
 	}
