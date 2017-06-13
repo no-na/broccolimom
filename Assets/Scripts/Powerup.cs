@@ -22,6 +22,13 @@ public abstract class Powerup : MonoBehaviour {
 	public void SetPlayer(GameObject playerObject){
 		affectedPlayerObject = playerObject;
 	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Player") {
+			Debug.Log ("powerup hit");
+			//this.gameObject.transform.position = new Vector2 (transform.position.y, 100);
+		}
+	}
 	
 	public abstract void ApplyPowerup();
 	public abstract void RemovePowerup();

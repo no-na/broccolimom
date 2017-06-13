@@ -109,13 +109,7 @@ public class DemoScene : MonoBehaviour
 
 		if( _controller.isGrounded )
 			_velocity.y = 0;
-		if(gameObject.GetComponent<Animator>().GetBool("die") == true)
-		{
-			normalizedHorizontalSpeed = 0;
-			_animator.Play( Animator.StringToHash( "die" ) );
-
-		}
-		else if( Input.GetAxisRaw("Horizontal"+controllerName)>0 )
+		if( Input.GetAxisRaw("Horizontal"+controllerName)>0 )
 		{
 			
 			normalizedHorizontalSpeed = 1;
@@ -233,6 +227,7 @@ public class DemoScene : MonoBehaviour
 			print("enemy collision");
 			//add if statements to check enemy type and change how much damage is done
 			if (other.gameObject.GetComponent<Enemy> ().eType == "EnemyBullet") {
+				Debug.Log ("enemy bullet hit");
 				DamagePlayer (1);
 				Destroy (other.gameObject);
 			} else if (other.gameObject.GetComponent<Enemy> ().eType == "PufferFish") {
