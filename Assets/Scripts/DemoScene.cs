@@ -88,6 +88,7 @@ public class DemoScene : MonoBehaviour
 				powerup.ApplyPowerup();
 				powerupEndTime = 400f;
 				hasPowerup = true;
+				powerup.transform.position = new Vector2 (transform.position.y, 20);
 			}
 		}
 		//shark collision detection
