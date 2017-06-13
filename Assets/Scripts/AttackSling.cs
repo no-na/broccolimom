@@ -21,7 +21,7 @@ public class AttackSling : Attack {
 	// Update is called once per frame
 	void Update ()
     {
-        BulletSpawn(firePoint);
+        //BulletSpawn(firePoint);
 
         BulletShot(bullet, firePoint);
 
@@ -92,24 +92,28 @@ public class AttackSling : Attack {
 	
 	public override void Aim()
 	{
-		if (transform.parent.localScale.x > 0)
+		if (Input.GetAxisRaw("Horizontal2") == 0 && Input.GetAxisRaw("Vertical2") == 0){
+			transform.localPosition = new Vector3(-2,0,0); 
+		}
+		else if (transform.parent.localScale.x > 0)
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal2"),
+				Input.GetAxisRaw("Horizontal2")*2,
 				Input.GetAxisRaw("Vertical2"), 
 				0
 			); 
 		else
 			transform.localPosition = new Vector3
 			(
-				Input.GetAxisRaw("Horizontal2")*-1,
+				Input.GetAxisRaw("Horizontal2")*-2,
 				Input.GetAxisRaw("Vertical2"), 
 				0
 			); 
 			
 		float rotation = 0f;
-		if(Input.GetAxisRaw("Vertical2") == 0)
+		if(Input.GetAxisRaw("Vertical2") == 0){
 			rotation = 0f;
+		}
 		else if(Input.GetAxisRaw("Horizontal2") == 0)
 			rotation = 90f;
 		else if(Input.GetAxisRaw("Horizontal2") * Input.GetAxisRaw("Vertical2") > 0)

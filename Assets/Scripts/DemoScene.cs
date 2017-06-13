@@ -147,8 +147,10 @@ public class DemoScene : MonoBehaviour
 		{
 			normalizedHorizontalSpeed = 0;
 
-            if (_controller.isGrounded)
+            if (_controller.isGrounded){
                 _animator.SetInteger("state", 0);
+				_attack.Aim();
+			}
 		}
 		
 		if( Input.GetAxisRaw("Vertical"+controllerName)>0)
