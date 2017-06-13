@@ -37,10 +37,24 @@ public class ClamBehavior : Enemy {
     // Update is called once per frame
     void Update()
     {
-        
 
 
-            Vector2 aimPoint = (target1.transform.position + target2.transform.position) / 2;
+
+        Vector2 aimPoint = Vector2.zero;
+
+        if (target1 == null)
+        {
+            aimPoint = target2.transform.position;
+        }
+        else if (target2 == null)
+        {
+            aimPoint = target1.transform.position;
+        }
+        else
+        {
+
+            aimPoint = (target1.transform.position + target2.transform.position) / 2;
+        }
 
             //rotate towards the aim point
             transform.up = aimPoint - (Vector2)transform.position;
