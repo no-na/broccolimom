@@ -6,6 +6,8 @@ public class squid_boss : MonoBehaviour {
 
     public float health;
 
+    public float punchSpeed;
+
     public GameObject rockprefab;
 
     private int attackAnim;
@@ -17,15 +19,21 @@ public class squid_boss : MonoBehaviour {
     public GameObject target1;
     public GameObject target2;
 
-    public BoxCollider2D top;
-    public BoxCollider2D mid;
-    public BoxCollider2D bot;
+    public GameObject top;
+    public GameObject mid;
+    public GameObject bot;
+
+    private GameObject tent;
 
     public GameObject throwpoint;
 
 	// Use this for initialization
 	void Start () {
         attackTimer = 0;
+
+        top.SetActive(false);
+        mid.SetActive(false);
+        bot.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -85,26 +93,81 @@ public class squid_boss : MonoBehaviour {
 
     }
 
+    void resetAnim()
+    {
+        anim.SetInteger("state", 0);
+        if (tent != null)
+        {
+            tent.SetActive(false);
+        }
+    }
+
 
     void pickAttack()
     {
+        int attack = Random.Range(1, 5);
+        if (attack == 1)
+        {
+            throwRock();
+        }
+        else
+        {
+            PunchAttack(attack);
+        }
+
+        Invoke("resetAnim", 3f);
     }
 
-    void PunchAttack()
+    void PunchAttack(int level)
     {
+        tent = top;
+
+        switch(level)
+        {
+            case 2:
+                tent = top;
+                break;
+            case 3:
+                tent = mid;
+                break;
+            case 4:
+                tent = bot;
+                break;
+            default:
+                break;
+                
+        }
+
+        tent.SetActive(true);
+        
+
+
+        anim.SetInteger("state", level);
 
     }
 
-    void throwRock(int level)
+   
+    
+
+    void throwRock()
     {
         //create a new rock prefab
+        
+
+        anim.SetInteger("state", 1);
+
+        Invoke("throwCode", 1f);
+
+
+    }
+
+    void throwCode()
+    {
         GameObject currRock = Instantiate(rockprefab, throwpoint.transform.position, new Quaternion());
 
         Vector2 spitAngle = throwpoint.transform.up;
 
         EnemyBullet ebull = currRock.GetComponent<EnemyBullet>();
         ebull.direction = spitAngle;
-
-
     }
 }
